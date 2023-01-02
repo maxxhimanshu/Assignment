@@ -4,12 +4,12 @@ const responseModel = require("../Models/userResponseModel")
 const quizModel = require("../Models/quizModel");
 const addEmailsModel = require("../Models/addEmailsModel");
 
-const verify = (req, res) => {
+const verify = async (req, res) => {
     const urlCode = req.params.urlCode
     const email = req.params.email
 
-    const data = addEmailsModel.find({ _id:"63b19643466a0f48bde4c104"})
-    console.log(data)
+    const data = await addEmailsModel.findOne({ email,urlCode})
+
     if (!data) return res.status(403).send({ status: false, message: "You are not allowed to access this" })
     return res.status(200).send({ status: true })
 
@@ -20,7 +20,7 @@ const showQuestions = async function (req, res) {
         const urlCode = req.params.urlCode
         const QuestionLevel = req.params.QuestionLevel
         console.log(urlCode,QuestionLevel)
-        const question = quizModel.findOne({ urlCode, QuestionLevel })
+        const question = await quizModel.findOne({ urlCode, QuestionLevel })
         res.status(200).send({ status: true, message: question })
 
     } catch (error) {

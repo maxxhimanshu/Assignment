@@ -8,7 +8,10 @@ const responseSchema = new mongoose.Schema(
             required: true,
             ref: "Login"
         },
-
+        email: {
+            type: String,
+            required: true,  
+        },
         urlCode: {
             type: String,
             required: true,
@@ -26,6 +29,10 @@ const responseSchema = new mongoose.Schema(
                 },
                 currentMarks: {
                     type: Number
+                },
+                givenAnswer: {
+                    type: String
+
                 }
 
             }],

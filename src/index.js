@@ -26,6 +26,6 @@ mongoose.connect("mongodb+srv://maxxhimanshu:himanshu@cluster0.sg6kw.mongodb.net
 
 
 
-app.listen(3000,()=>{
+app.listen(3001,()=>{
     console.log("express is connected")
 })
